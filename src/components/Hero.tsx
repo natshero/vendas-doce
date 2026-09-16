@@ -34,9 +34,21 @@ export function Hero() {
           </div>
 
           <div className="mt-8 flex flex-col items-center gap-1 md:items-start">
-            <span className="font-heading text-3xl font-bold text-coral sm:text-4xl">
-              {productConfig.precoFormatado}
-            </span>
+            {productConfig.promocaoLancamento.ativa && (
+              <span className="rounded-full bg-tropical/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-tropical">
+                {productConfig.promocaoLancamento.rotulo}
+              </span>
+            )}
+            <div className="mt-1 flex items-baseline gap-2">
+              {productConfig.promocaoLancamento.ativa && (
+                <span className="font-heading text-lg text-brown/40 line-through">
+                  {productConfig.promocaoLancamento.precoNormalFormatado}
+                </span>
+              )}
+              <span className="font-heading text-3xl font-bold text-coral sm:text-4xl">
+                {productConfig.precoFormatado}
+              </span>
+            </div>
             <span className="text-sm text-brown/60">Pagamento único, sem valores ocultos</span>
           </div>
 

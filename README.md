@@ -155,9 +155,27 @@ Depois, em [vercel.com/new](https://vercel.com/new):
 
 Após o primeiro deploy, atualize `NEXT_PUBLIC_SITE_URL` com o domínio final gerado pela Vercel (ou seu domínio próprio) e faça um novo deploy para que `metadata`, `canonical` e `sitemap.xml` reflitam a URL correta.
 
+## Promoção de lançamento (preço riscado)
+
+O site está configurado com uma promoção de lançamento real: R$ 27,90 (preço atual) com R$ 47,90 riscado ao lado (preço normal, que passa a valer depois). Isso é diferente de um "preço-gancho" falso — só é legal (e honesto) se você **realmente aumentar o preço** para R$ 47,90 quando a promoção terminar. Mostrar um valor riscado que nunca vai ser cobrado de verdade é propaganda enganosa pelo art. 37 do Código de Defesa do Consumidor.
+
+Para editar, em `src/config/product.ts`:
+
+```ts
+promocaoLancamento: {
+  ativa: true,              // false = volta a mostrar só o preço único, sem riscado
+  rotulo: "Preço de lançamento",
+  precoNormal: 47.9,
+  precoNormalFormatado: "R$ 47,90",
+  avisoLancamento: "...",
+}
+```
+
+Quando a promoção acabar: atualize `preco`/`precoFormatado` para o novo valor real (R$ 47,90) e mude `promocaoLancamento.ativa` para `false`.
+
 ## Checklist de revisão antes de publicar
 
-- [ ] Preço exibido em todos os pontos é R$ 27,90.
+- [ ] Preço exibido em todos os pontos é R$ 27,90 (ou o valor vigente da promoção de lançamento).
 - [ ] Todos os botões de compra apontam para `https://pay.cakto.com.br/n9gnu5v_1113883` e abrem na mesma aba.
 - [ ] Exatamente cinco módulos cadastrados em `productConfig.modulos`.
 - [ ] Nenhum bônus inventado foi adicionado.

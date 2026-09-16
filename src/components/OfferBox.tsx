@@ -37,12 +37,29 @@ export function OfferBox() {
             </ul>
 
             <div className="mt-8 flex flex-col items-center gap-1 border-t border-brown/10 pt-8">
-              <span className="font-heading text-4xl font-bold text-coral">
-                {productConfig.precoFormatado}
-              </span>
+              {productConfig.promocaoLancamento.ativa && (
+                <span className="rounded-full bg-tropical/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-tropical">
+                  {productConfig.promocaoLancamento.rotulo}
+                </span>
+              )}
+              <div className="mt-1 flex items-baseline gap-2">
+                {productConfig.promocaoLancamento.ativa && (
+                  <span className="font-heading text-xl text-brown/40 line-through">
+                    {productConfig.promocaoLancamento.precoNormalFormatado}
+                  </span>
+                )}
+                <span className="font-heading text-4xl font-bold text-coral">
+                  {productConfig.precoFormatado}
+                </span>
+              </div>
               <span className="text-sm text-brown/60">
                 Pagamento único — formas de pagamento disponíveis no checkout
               </span>
+              {productConfig.promocaoLancamento.ativa && (
+                <span className="mt-1 max-w-xs text-center text-xs text-brown/50">
+                  {productConfig.promocaoLancamento.avisoLancamento}
+                </span>
+              )}
             </div>
 
             <div className="mt-6 flex flex-col items-center gap-3">

@@ -85,7 +85,22 @@ export const productConfig = {
   checkoutUrl: "https://pay.cakto.com.br/n9gnu5v_1113883",
   garantiaDias: 7,
 
-  barraSuperior: "Material digital completo por apenas R$ 27,90",
+  // Promoção de lançamento: preço normal real que passará a valer quando
+  // a promoção terminar. IMPORTANTE — isto só é uma promoção legítima
+  // (e não propaganda enganosa, vedada pelo art. 37 do CDC) se o preço
+  // for de fato reajustado para `precoNormalFormatado` ao final do
+  // período. Para desativar a promoção e voltar a mostrar só o preço
+  // único, basta trocar `ativa` para `false`.
+  promocaoLancamento: {
+    ativa: true,
+    rotulo: "Preço de lançamento",
+    precoNormal: 47.9,
+    precoNormalFormatado: "R$ 47,90",
+    avisoLancamento:
+      "Preço válido durante a promoção de lançamento. Depois desse período, o valor passa a ser R$ 47,90.",
+  },
+
+  barraSuperior: "Promoção de lançamento: material digital completo por apenas R$ 27,90",
 
   // ---------------------------------------------------------------------
   // Hero
